@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mintic.backendmintic;
+package Persistencia;
 
 /**
  *
