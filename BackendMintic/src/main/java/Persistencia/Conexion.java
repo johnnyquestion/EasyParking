@@ -29,6 +29,7 @@ public class Conexion {
             Class.forName(driver);
             // Nos conectamos a la bd
             conn= (Connection) DriverManager.getConnection(url, user, pass);
+            System.out.println("Conectado");
             // Si la conexion fue exitosa mostramos un mensaje de conexion exitosa
             if (conn!=null){
                 JOptionPane.showMessageDialog(null,"Conexion Correcta");
