@@ -17,8 +17,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Conexion objConector = new Conexion();
-        objConector.conectar();
+        /*Conexion objConector = new Conexion();
+        objConector.conectar();*/
     }
     
 }

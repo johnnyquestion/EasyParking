@@ -5,8 +5,6 @@
  */
 package Persistencia;
 
-import java.sql.PreparedStatement;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +16,7 @@ public class RegistroVehiculo {
     private String placa;
     private String color;
     private String modelo;
+    //private String tipoVehiculo;
     
     //Construcctor
     public RegistroVehiculo() {
@@ -48,27 +47,46 @@ public class RegistroVehiculo {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
+
+    /*public String getTipoVehiculo() {
+        return tipoVehiculo;
+    }
+
+    public void setTipoVehiculo(String tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
+    }*/
+    
             
     //Metodos
-    public void registarVehiculo(){
+    public boolean registarVehiculo(){
         Conexion objConector = new Conexion();
-        objConector.conectar();
+        //objConector.conectar();
         try{
             String sql = "INSERT INTO vehiculo "
-                    + "(veh_placa, veh_color, veh_modelo )"
-                    + "VALUES(?,?,?);";
-            PreparedStatement declaracion;
-            declaracion = objConector.conn.prepareStatement(sql);
-            declaracion.setString(1, this.placa);
-            declaracion.setString(2, this.color);
-            declaracion.setString(1, this.modelo);
+                    + "(veh_placa, veh_color, veh_modelo, Tipo_Vehiculo_idTipo_Vehiculo )"
+                    + "VALUES('" + this.placa + "','" + this.color + "','" 
+                    + this.modelo + "');  ";
 
-            declaracion.execute();
+            if(objConector.setAutoCommitBD(false)){
+                if(objConector.insertarBD(sql)){
+                    objConector.commitBD();
+                    objConector.desconectar();
+                    return true;
+                } else{ //si no logro insertar en la BD
+                    objConector.rollbackBD();
+                    objConector.desconectar();
+                    return false;
+                }
+            } else{
+                objConector.desconectar();
+                return false;
+            }
         }
         catch(Exception error){
             JOptionPane.showMessageDialog(null, "Error: "+error);
         }
         objConector.desconectar();
+        return false;
     }
         
 
