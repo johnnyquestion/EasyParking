@@ -15,22 +15,40 @@ import javax.swing.JOptionPane;
  */
 public class RegistroVehiculo {
     //Atributos
-    private double precioServicio;
+    private String placa;
+    private String color;
+    private String modelo;
     
     //Construcctor
     public RegistroVehiculo() {
     }
     
     //Encapsular "Getters y Setters"
-    public double getPrecioServicio() {
-        return precioServicio;
+
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setPrecioServicio(double precioServicio) {
-        this.precioServicio = precioServicio;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
-        
-    
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+            
     //Metodos
     public void registarVehiculo(){
         Conexion objConector = new Conexion();
@@ -41,7 +59,9 @@ public class RegistroVehiculo {
                     + "VALUES(?,?,?);";
             PreparedStatement declaracion;
             declaracion = objConector.conn.prepareStatement(sql);
-            declaracion.setDouble(1, this.precioServicio);
+            declaracion.setString(1, this.placa);
+            declaracion.setString(2, this.color);
+            declaracion.setString(1, this.modelo);
 
             declaracion.execute();
         }
