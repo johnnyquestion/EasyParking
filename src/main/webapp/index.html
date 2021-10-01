@@ -63,34 +63,34 @@
     </nav>
     <div class="container-fluid imagen">
         <form action="post">
-            <div class="d-flex justify-content-center">
-                <font color="White" />
-                <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center text-light m-3">
                     <h1>Registrar Vehículo</h1>
-                </div><br>
+                </div>
+                <div class="col-6 mt-4">
+                    <label class="form-label text-light">Seleccionar Tipo Vehículo</label>
+                    <select class="form-select" aria-label="Defaul select example" style="max-width: 150px;">
+                        <option selected>Seleccione...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="col-6 mt-4">
+                    <label class="form-label text-light">Digitar Placa</label>
+                    <input type="text" class="form-control" placeholder="Digite la placa" style="max-width: 150px;">
+                </div>
+                <div class="col-6 mt-4">
+                    <label class="form-label text-light">Fecha</label>
+                    <input type="date" class="form-control" style="max-width: 150px;">
+                </div>
+                <div class="col-6 mt-4">
+                    <label class="form-label text-light">Hora</label>
+                    <input type="time" class="form-control" style="max-width: 150px;">
+                </div>
             </div>
 
-            <label class="form-label">Seleccionar Tipo Vehículo</label>
-            <select class="form-select" aria-label="Defaul select example">
-                <option selected>Seleccione...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select><br>
-
-            <label class="form-label">Digitar Placa</label>
-            <input type="text" class="form-control" placeholder="Digite la placa"><br>
-
-
-            <label class="form-label">Fecha</label>
-            <input type="date" class="form-control"><br>
-
-            <label class="form-label">Hora</label>
-            <input type="time" class="form-control">
-
-            <br>
-
-            <button type="submit" class="btn btn-primary">Ingresar Vehiculo</button>
+            <button type="submit" class="btn btn-primary m-4">Ingresar Vehiculo</button>
     </div>
 
     </form>
