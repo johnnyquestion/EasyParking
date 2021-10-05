@@ -3,6 +3,9 @@
     Created on : 24/09/2021, 03:46:59 PM
     Author     : USUARIO
 --%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.List"%>
 <%@page import="logica.Vehiculo"%>
@@ -21,8 +24,13 @@
             System.out.println("Guardar Vehiculo");
             v.setVeh_placa(request.getParameter("placa")); //a este hay que convertirlo de entero a string
             v.setVeh_color(request.getParameter("color"));
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = format.parse(request.getParameter("fecha"));
+            java.sql.Date sql = new java.sql.Date(date.getTime());
+            System.out.println(sql);
+            v.setFecha(sql);
             v.setVeh_modelo(request.getParameter("modelo"));
-            v.setTipo_Vehiculo_idTipo_Vehiculo(request.getParameter("TipoVeh"));
+            v.setTipo_Vehiculo_idTipo_Vehiculo(request.getParameter("tipoVehiculo"));
 
             if (v.guardarVehiculo()) {
                 //si guarda bien el contacto, se concatena otros datos para el json

@@ -84,6 +84,7 @@ public class ConexionBD {
         } catch (SQLException | RuntimeException ex) {
             //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error al insertar en la BD");
+            System.out.println(ex);
             return false;
         }
     }
