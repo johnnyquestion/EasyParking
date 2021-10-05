@@ -27,8 +27,11 @@
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date = format.parse(request.getParameter("fecha"));
             java.sql.Date sql = new java.sql.Date(date.getTime());
-            System.out.println(sql);
             v.setFecha(sql);
+            SimpleDateFormat hora = new SimpleDateFormat("hh:mm:ss");
+            Date dateHora = hora.parse(request.getParameter("hora"));
+            java.sql.Time sqlHora = new java.sql.Time(dateHora.getTime());
+            v.setHora(sqlHora);
             v.setVeh_modelo(request.getParameter("modelo"));
             v.setTipo_Vehiculo_idTipo_Vehiculo(request.getParameter("tipoVehiculo"));
 
@@ -63,7 +66,7 @@
         case "actualizarVehiculo":
 
             System.out.println("Actualizar Vehiculo");
-            v.setVeh_placa(request.getParameter("placa")); 
+            v.setVeh_placa(request.getParameter("placa"));
             v.setVeh_color(request.getParameter("color"));
             v.setVeh_modelo(request.getParameter("modelo"));
             v.setTipo_Vehiculo_idTipo_Vehiculo(request.getParameter("TipoVeh"));

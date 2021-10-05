@@ -85,7 +85,7 @@ public class Vehiculo {
         ConexionBD conexion = new ConexionBD();
         String sentencia = "INSERT INTO vehiculo(veh_placa, fecha, hora, Tipo_Vehiculo_idTipo_Vehiculo)"
                 + " VALUES ( '" + this.veh_placa + "','" + this.fecha + "',"
-                + "" + this.hora + ",'" + this.Tipo_Vehiculo_idTipo_Vehiculo + "');  ";
+                + "'" + this.hora + "','" + this.Tipo_Vehiculo_idTipo_Vehiculo + "');  ";
         //Vamos a configurar el setAutocommit de la conexionBD a falso
         System.out.println(this.toString());
         System.out.println("Esta es la sentencia"+ sentencia);
