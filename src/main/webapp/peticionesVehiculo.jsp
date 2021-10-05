@@ -28,7 +28,7 @@
             Date date = format.parse(request.getParameter("fecha"));
             java.sql.Date sql = new java.sql.Date(date.getTime());
             v.setFecha(sql);
-            SimpleDateFormat hora = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat hora = new SimpleDateFormat("hh:mm");
             Date dateHora = hora.parse(request.getParameter("hora"));
             java.sql.Time sqlHora = new java.sql.Time(dateHora.getTime());
             v.setHora(sqlHora);
