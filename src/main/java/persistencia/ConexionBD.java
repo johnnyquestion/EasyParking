@@ -28,7 +28,7 @@ public class ConexionBD {
         url = "jdbc:mysql://" + host + "/" + db; // dato que se crea concatenado
         username = "root";
         password = "";
-        DB_driver = "com.mysql.jdbc.Driver";// de acuerdo a la dependencia que estamos usando
+        DB_driver = "com.mysql.cj.jdbc.Driver";// de acuerdo a la dependencia que estamos usando
         try {
             Class.forName(DB_driver); //Se asigna el driver
         } catch (ClassNotFoundException ex) {

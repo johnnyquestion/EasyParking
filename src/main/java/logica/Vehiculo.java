@@ -139,6 +139,8 @@ public class Vehiculo {
             vehiculo.setHora(rs.getTime("hora"));
             vehiculo.setTipo_Vehiculo_idTipo_Vehiculo(rs.getString("Tipo_Vehiculo_idTipo_Vehiculo"));
             listaVehiculo.add(vehiculo);
+            System.out.println(rs.getTime("hora"));
+            System.out.println(rs.getString("hora"));
 
         }
         conexion.closeConnection();// cierro conexion
