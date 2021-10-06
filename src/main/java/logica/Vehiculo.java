@@ -138,7 +138,6 @@ public class Vehiculo {
             vehiculo.setFecha(rs.getDate("Fecha"));
             vehiculo.setHora(rs.getTime("hora"));
             vehiculo.setTipo_Vehiculo_idTipo_Vehiculo(rs.getString("Tipo_Vehiculo_idTipo_Vehiculo"));
-
             listaVehiculo.add(vehiculo);
 
         }

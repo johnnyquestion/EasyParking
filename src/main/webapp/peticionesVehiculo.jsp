@@ -13,7 +13,7 @@
 
 
 <%
-    String respuesta = "";
+    String respuesta = "{";
     String proceso = request.getParameter("proceso"); //request HTTP 
 //a los request se les puede pasar parámetros
 //se va a validar el tipo de proceso
@@ -57,9 +57,9 @@
             System.out.println("Listar Vehiculos");
             List<Vehiculo> listaVehiculo = v.listarVehiculo();
             if (listaVehiculo.isEmpty()) {
-                respuesta += "\"" + proceso + "\": true,\"Contactos\":[]"; //genera una lista vacía en el json
+                respuesta += "\"" + proceso + "\": true,\"Vehiculos\":[]"; //genera una lista vacía en el json
             } else {
-                respuesta += "\"" + proceso + "\": true,\"Contactos\":" + new Gson().toJson(listaVehiculo); //guarda la lista en el json
+                respuesta += "\"" + proceso + "\": true,\"Vehiculos\":" + new Gson().toJson(listaVehiculo); //guarda la lista en el json
             }
 
             break;
