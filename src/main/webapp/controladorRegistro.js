@@ -1,6 +1,7 @@
 var app = angular.module('easyParking', []);
 app.controller('registroControlador', function ($scope, $http) {
     $scope.registrarVehiculo = function () {
+        $scope.mostrarRegistrarVehiculo = true;
         console.log('guardar');
 
         if ($scope.tipoVehiculo === undefined || $scope.fecha === undefined || $scope.hora === undefined || $scope.tipoVehiculo === undefined) {
@@ -37,9 +38,12 @@ app.controller('registroControlador', function ($scope, $http) {
         }).then(function(respuesta){
             if (respuesta.status === 200) {
                 $scope.registros = respuesta.data.data;
+
+
             } else {
                 console.error(respuesta);
             }
+            console.log($scope.registros)
         });
     };
     $scope.borrarVehiculo = function(placa){
@@ -80,7 +84,6 @@ app.controller('registroControlador', function ($scope, $http) {
                 url: 'peticionesVehiculo.jsp',
                 params: params
             }).then(function (respuesta) {
-                console.log(respuesta);
                 alert("Actualizado");
             });
         };
@@ -88,6 +91,7 @@ app.controller('registroControlador', function ($scope, $http) {
     
     $scope.mostrarRegistroVehiculo = function(){
         console.log('Im here');
+        $scope.mostrarDatos = true;
         $scope.mostrarListaVehiculos = false;
         $scope.actualizar = false;
         $scope.registroActualizar = undefined;
@@ -104,8 +108,16 @@ app.controller('registroControlador', function ($scope, $http) {
         $scope.registroActualizar = registro;
         $scope.placa = registro.veh_placa;
         $scope.fecha = registro.fecha;
-        $scope.hora = registro.hora;
+        let horafortmat = registro.hora.split(" ");
+        $scope.hora = horafortmat[0];
         $scope.tipoVehiculo = registro.Tipo_Vehiculo_idTipo_Vehiculo;
     };
+    
+    $scope.mostrarInicio = function(){
+        $scope.mostrarDatos = false;
+        $scope.mostrarListaVehiculos = false;
+        $scope.mostrarRegistrarVehiculo = false;
+        $scope.actualizar = false;
+    }
 });
 

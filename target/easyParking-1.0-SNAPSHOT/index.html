@@ -15,6 +15,14 @@
                 margin-top: 20px;
                 background-size: cover;
             }
+            .image2{
+                background-image: url("https://i.ibb.co/820hC94/Fondo-Auto-Logo.png");
+                        max-width: 800px;
+                        height: 800px;
+                        margin-top: 20px;
+                        max-width: 100%;
+                        background-size: cover;
+            }
         </style>
     </head>
     <body>
@@ -24,7 +32,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="#" ng-click="mostrarInicio()">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" ng-click="mostrarRegistroVehiculo()">Registrar Vehículo</a>
@@ -40,7 +48,12 @@
                     </div>
                 </div>
             </nav>
-            <div class="container-fluid imagen" ng-show="!mostrarListaVehiculos">
+            <section class="form-login image2" ng-show="!mostrarDatos">
+                <input class="controls" type="text" name="usuario" value="" placeholder="Usuario">
+                <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+                <input class="buttons" type="submit" name="" value="Ingresar">
+                <p><a href="#">¿Olvidaste tu contraseña?</a></p> </section>
+            <div class="container-fluid imagen" ng-show="!mostrarListaVehiculos && mostrarDatos">
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 text-center text-light m-3" ng-show="!actualizar"><h1>Registrar Vehículo</h1></div>
                     <div class="col-12 text-center text-light m-3" ng-show="actualizar"><h1>Actualizar Vehículo</h1></div>
