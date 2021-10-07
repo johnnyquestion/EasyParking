@@ -7,6 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<<<<<<< HEAD
         <style>
             .imagen {
                 background-image: url("https://i.ibb.co/j60YtkD/Fondo-Proyecto3.png");
@@ -24,6 +25,9 @@
                 background-size: cover;
             }
         </style>
+=======
+        <link rel="stylesheet" href="style.css">
+>>>>>>> 465a38a4e01da3092d1b5067a5205d1db75bfceb
     </head>
     <body style="background-color:#1C1A1A;">
         <div ng-app="easyParking" ng-controller="registroControlador">
@@ -44,7 +48,21 @@
                     </div>
                 </div>
             </nav>
+<<<<<<< HEAD
             <div class="container-fluid image2" ng-show="!mostrarDatos">
+=======
+            <section class="form-login image2" ng-show="!mostrarDatos">
+                <h5>Login</h5>
+                <div style="display: flex;justify-content: left;"><h5>Usuario</h5></div>
+                <input class="controls" type="text" name="usuario" value="" placeholder="Usuario">
+                <div style="display: flex;justify-content: left;"><h5>Contraseña</h5></div>
+                <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+                <div style="display: flex;align-items: center;">
+                <input class="buttons" type="submit" name="" value="Ingresar">
+                </div>
+                <p><a href="#">¿Olvidaste tu contraseña?</a></p> </section>
+            <div class="container-fluid imagen" ng-show="!mostrarListaVehiculos && mostrarDatos">
+>>>>>>> 465a38a4e01da3092d1b5067a5205d1db75bfceb
                 <div class="row d-flex justify-content-center">
                     <div class="col-12 mt-4 d-flex justify-content-center">
                         <input class="col-12 text-center text-light m-3" type="text" name="usuario" value="" placeholder="Usuario" style="max-width: 250px">
