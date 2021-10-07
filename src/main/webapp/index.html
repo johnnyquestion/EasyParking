@@ -36,12 +36,12 @@
                 <div style="display: flex;justify-content: left;"><h5>Contraseña</h5></div>
                 <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
                 <div style="display: flex;align-items: center;">
-                    <input class="buttons" type="submit" name="" value="Ingresar">
+                    <input class="buttons" type="submit" value="Ingresar">
                 </div>
                 <p><a href="#">¿Olvidaste tu contraseña?</a></p> </section>
             <div class="container-fluid imagen" ng-show="!mostrarListaVehiculos && mostrarDatos">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-12 text-center text-light m-5" ng-show="!actualizar"><h1>Registrar Vehículo</h1></div>
+                    <div class="col-12 text-center text-light m-2" ng-show="!actualizar"><h1>Registrar Vehículo</h1></div>
                     <div class="col-12 text-center text-light m-3" ng-show="actualizar"><h1>Actualizar Vehículo</h1></div>
                     <div class="col-6 mt-3 d-flex justify-content-end">
                         <div>
@@ -57,24 +57,24 @@
                     <div class="col-6 mt-3 d-flex justify-content-start">
                         <div>
                             <label class="form-label text-light">Digitar Placa*</label>
-                            <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" placeholder="Digite la placa" style="max-width: 150px;" ng-model="placa">
+                            <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" placeholder="Digite la placa" style="width:200px;height:40px;" ng-model="placa">
                         </div>
                     </div>
-                    <div class="col-6 mt-4 d-flex justify-content-end">
+                    <div class="col-6 mt-5 d-flex justify-content-end">
                         <div>
                             <label class="form-label text-light">Fecha*</label>
                             <input type="date" class="form-control" style="max-width: 200px;" ng-model="fecha">
                         </div>
                     </div>
-                    <div class="col-6 mt-4 d-flex justify-content-start">
+                    <div class="col-6 mt-5 d-flex justify-content-start">
                         <div>
                             <label class="form-label text-light">Hora*</label>
-                            <input type="time" class="form-control" style="max-width: 175px;" ng-model="hora">
+                            <input type="time" class="form-control" style="width:200px;height:40px;" ng-model="hora">
                         </div>
                     </div>
                 </div>
                 <div class="col-12 mt-4 d-flex justify-content-center ">
-                    <button type="button" class="btn btn-success m-4 bg-dark" ng-click="registrarVehiculo()" ng-show="!actualizar">Ingresar Vehiculo</button>
+                    <button type="button" class="btn btn-success m-4 bg-dark" style="width:200px;height:40px;" ng-click="registrarVehiculo()" ng-show="!actualizar">Ingresar Vehiculo</button>
                     <button type="button" class="btn btn-success m-4 bg-dark" ng-click="actualizarVehiculo()" ng-show="actualizar">Actualizar Vehiculo</button>
                 </div>
             </div>
