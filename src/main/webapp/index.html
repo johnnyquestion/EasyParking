@@ -7,23 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-        <style>
-            .imagen {
-                background-image: url("https://i.ibb.co/j60YtkD/Fondo-Proyecto3.png");
-                max-width: 600px;
-                height: 600px;
-                margin-top: 20px;
-                background-size: cover;
-            }
-            .image2{
-                background-image: url("https://i.ibb.co/820hC94/Fondo-Auto-Logo.png");
-                        max-width: 800px;
-                        height: 800px;
-                        margin-top: 20px;
-                        max-width: 100%;
-                        background-size: cover;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div ng-app="easyParking" ng-controller="registroControlador">
@@ -49,9 +33,14 @@
                 </div>
             </nav>
             <section class="form-login image2" ng-show="!mostrarDatos">
+                <h5>Login</h5>
+                <div style="display: flex;justify-content: left;"><h5>Usuario</h5></div>
                 <input class="controls" type="text" name="usuario" value="" placeholder="Usuario">
+                <div style="display: flex;justify-content: left;"><h5>Contraseña</h5></div>
                 <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+                <div style="display: flex;align-items: center;">
                 <input class="buttons" type="submit" name="" value="Ingresar">
+                </div>
                 <p><a href="#">¿Olvidaste tu contraseña?</a></p> </section>
             <div class="container-fluid imagen" ng-show="!mostrarListaVehiculos && mostrarDatos">
                 <div class="row d-flex justify-content-center">
