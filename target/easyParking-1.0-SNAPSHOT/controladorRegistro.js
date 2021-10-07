@@ -2,9 +2,9 @@ var app = angular.module('easyParking', []);
 app.controller('registroControlador', function ($scope, $http) {
     $scope.registrarVehiculo = function () {
         $scope.mostrarRegistrarVehiculo = true;
-        console.log('guardar');
-
-        if ($scope.tipoVehiculo === undefined || $scope.fecha === undefined || $scope.hora === undefined || $scope.tipoVehiculo === undefined) {
+        if ($scope.tipoVehiculo === undefined || $scope.fecha === undefined || 
+                $scope.hora === undefined || $scope.tipoVehiculo === undefined) {
+            
             alert("Todos los campos son obligatorios.");
         } else {
             let registro = {
@@ -14,19 +14,18 @@ app.controller('registroControlador', function ($scope, $http) {
                 hora: $scope.hora,
                 tipoVehiculo: $scope.tipoVehiculo
             };
-            console.log(fecha);               
 
             $http({
                 method: 'POST',
                 url: 'peticionesVehiculo.jsp',
                 params: registro
             }).then(function (respuesta) {
-                console.log(respuesta);
                 alert("Guardado");
             });
         };
     };
     $scope.listarVehiculos = function(){
+        $scope.mostrarDatos = true;
         $scope.mostrarListaVehiculos = true;
         let params = {
             proceso: 'listarVehiculo'
@@ -36,14 +35,12 @@ app.controller('registroControlador', function ($scope, $http) {
             url: 'peticionesVehiculo.jsp',
             params: params
         }).then(function(respuesta){
-            if (respuesta.status === 200) {
+            //if (respuesta.status === 200) {
                 $scope.registros = respuesta.data.data;
-
-
-            } else {
-                console.error(respuesta);
-            }
-            console.log($scope.registros)
+            //} //else {
+                //console.error(respuesta);
+            //}
+            //console.log($scope.registros)
         });
     };
     $scope.borrarVehiculo = function(placa){
@@ -51,7 +48,7 @@ app.controller('registroControlador', function ($scope, $http) {
             proceso: 'borrarVehiculo',
             placa: placa
         };
-        console.log(params);
+
         $http({
             method: 'GET',
             url: 'peticionesVehiculo.jsp',
@@ -68,7 +65,8 @@ app.controller('registroControlador', function ($scope, $http) {
     };
     
     $scope.actualizarVehiculo = function(){
-        if ($scope.tipoVehiculo === undefined || $scope.fecha === undefined || $scope.hora === undefined || $scope.tipoVehiculo === undefined) {
+        if ($scope.tipoVehiculo === undefined || $scope.fecha === undefined || 
+                $scope.hora === undefined || $scope.tipoVehiculo === undefined) {
             alert("Todos los campos son obligatorios.");
         } else {
             let params = {
@@ -78,7 +76,7 @@ app.controller('registroControlador', function ($scope, $http) {
                 hora: $scope.hora,
                 tipoVehiculo: $scope.tipoVehiculo
             };
-            console.log(params);
+
             $http({
                 method: 'GET',
                 url: 'peticionesVehiculo.jsp',
@@ -90,7 +88,6 @@ app.controller('registroControlador', function ($scope, $http) {
     };
     
     $scope.mostrarRegistroVehiculo = function(){
-        console.log('Im here');
         $scope.mostrarDatos = true;
         $scope.mostrarListaVehiculos = false;
         $scope.actualizar = false;
@@ -118,6 +115,6 @@ app.controller('registroControlador', function ($scope, $http) {
         $scope.mostrarListaVehiculos = false;
         $scope.mostrarRegistrarVehiculo = false;
         $scope.actualizar = false;
-    }
+    };
 });
 

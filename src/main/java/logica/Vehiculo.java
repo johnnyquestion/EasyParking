@@ -129,7 +129,7 @@ public class Vehiculo {
 
     public List<Vehiculo> listarVehiculo() throws SQLException {
         ConexionBD conexion = new ConexionBD();
-        String sentencia = "SELECT * FROM vehiculo ORDER BY veh_placa ASC;";
+        String sentencia = "SELECT * FROM vehiculo ORDER BY fecha DESC;";
         List<Vehiculo> listaVehiculo = new ArrayList<>(); // creamos una lista para los contactos
         ResultSet rs = conexion.consultarBD(sentencia);// rs es de tipo ResultSet porque obtenemos datos de la bd        
         while (rs.next()) {
