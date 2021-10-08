@@ -13,20 +13,10 @@
     <body>
         <div ng-app="easyParking" ng-controller="registroControlador">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#" ng-click="mostrarInicio()">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" ng-click="mostrarRegistroVehiculo()">Registrar Vehículo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" ng-click="listarVehiculos()">Listar Vehículos</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="container-fluid" style="display: flex;justify-content: left;">
+                    <a class="navbar-brand" href="#"ng-click="mostrarInicio()">Inicio</a>
+                    <a class="navbar-brand" href="#"ng-click="mostrarRegistroVehiculo()">Registrar Vehículo</a>
+                    <a class="navbar-brand" href="#"ng-click="listarVehiculos()">Listar Vehículos</a>
                 </div>
             </nav>
             <section class="form-login image2" ng-show="!mostrarDatos">

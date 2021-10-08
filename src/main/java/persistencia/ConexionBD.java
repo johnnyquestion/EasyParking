@@ -26,10 +26,10 @@ public class ConexionBD {
 
     public ConexionBD() {
         host = "localhost:3306"; //BD local
-        db = "c3s45grupo5"; // nombre de bd
+        db = "mintic"; // nombre de bd
         url = "jdbc:mysql://" + host + "/" + db; // dato que se crea concatenado
-        username = "c3s45grupo5";
-        password = "W4qYNMDd";
+        username = "root";
+        password = "";
         DB_driver = "com.mysql.cj.jdbc.Driver";// de acuerdo a la dependencia que estamos usando
         try {
             Class.forName(DB_driver); //Se asigna el driver
