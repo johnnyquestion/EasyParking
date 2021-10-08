@@ -26,16 +26,15 @@ public class ConexionBD {
 
     public ConexionBD() {
         host = "localhost:3306"; //BD local
-        db = "mintic"; // nombre de bd
+        db = "c3s45grupo5"; // nombre de bd
         url = "jdbc:mysql://" + host + "/" + db; // dato que se crea concatenado
-        username = "root";
-        password = "";
+        username = "c3s45grupo5";
+        password = "W4qYNMDd";
         DB_driver = "com.mysql.cj.jdbc.Driver";// de acuerdo a la dependencia que estamos usando
         try {
             Class.forName(DB_driver); //Se asigna el driver
         } catch (ClassNotFoundException ex) {
-            //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error al asignar driver");
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Conectar a la BD
         try {
