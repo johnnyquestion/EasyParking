@@ -16,13 +16,10 @@
 <%
     Response<Vehiculo> respuesta = new Response<Vehiculo>();
     String proceso = request.getParameter("proceso"); //request HTTP 
-    //a los request se les puede pasar parámetros
-    //se va a validar el tipo de proceso
 
     Vehiculo v = new Vehiculo(); //se piden los parámetros del contacto que se quiere guardar
     switch (proceso) {
         case "guardarVehiculo":
-            System.out.println("Guardar Vehiculo");
             v.setVeh_placa(request.getParameter("placa")); //a este hay que convertirlo de entero a string
             v.setVeh_color(request.getParameter("color"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -38,18 +35,15 @@
             respuesta.setSuccess(v.guardarVehiculo());
             break;
         case "borrarVehiculo":
-            System.out.println("Eliminar Vehiculo");
             String placa = request.getParameter("placa");
             respuesta.setSuccess(v.borrarVehiculo(placa));
             break;
         case "listarVehiculo":
-            System.out.println("Listar Vehiculos");
             List<Vehiculo> listaVehiculos = v.listarVehiculo();            
             respuesta = new Response<Vehiculo>(true, listaVehiculos);
             break;
         case "actualizarVehiculo":
 
-            System.out.println("Actualizar Vehiculo");
             v.setVeh_placa(request.getParameter("placa"));
             v.setVeh_color(request.getParameter("color"));
             DateFormat formatActualizar = new SimpleDateFormat("yyyy-MM-dd");
@@ -62,8 +56,9 @@
             v.setHora(sqlHoraActualizar);
             v.setVeh_modelo(request.getParameter("modelo"));
             v.setTipo_Vehiculo_idTipo_Vehiculo(request.getParameter("tipoVehiculo"));
-            System.out.println(sqlActualizar);            
+            v.setPlacaAntigua(request.getParameter("placaAntigua"));
             respuesta.setSuccess(v.actualizarVehiculo());
+            
             break;
         default:
             respuesta.setMessage("Lo sentimos, los datos que ha enviado, son inválidos."

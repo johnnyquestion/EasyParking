@@ -35,12 +35,12 @@ app.controller('registroControlador', function ($scope, $http) {
             url: 'peticionesVehiculo.jsp',
             params: params
         }).then(function(respuesta){
-            //if (respuesta.status === 200) {
+            if (respuesta.status === 200) {
                 $scope.registros = respuesta.data.data;
-            //} //else {
-                //console.error(respuesta);
-            //}
-            //console.log($scope.registros)
+            } else {
+                console.error(respuesta);
+            }
+            console.log($scope.registros)
         });
     };
     $scope.borrarVehiculo = function(placa){
@@ -70,13 +70,14 @@ app.controller('registroControlador', function ($scope, $http) {
             alert("Todos los campos son obligatorios.");
         } else {
             let params = {
+                placaAntigua: $scope.placaAntigua,
                 proceso: 'actualizarVehiculo',
                 placa: $scope.placa,
                 fecha: $scope.fecha,
                 hora: $scope.hora,
                 tipoVehiculo: $scope.tipoVehiculo
             };
-
+            console.log(params)
             $http({
                 method: 'GET',
                 url: 'peticionesVehiculo.jsp',
@@ -103,6 +104,7 @@ app.controller('registroControlador', function ($scope, $http) {
         $scope.mostrarListaVehiculos = false;
         $scope.actualizar = true;
         $scope.registroActualizar = registro;
+        $scope.placaAntigua = registro.veh_placa;
         $scope.placa = registro.veh_placa;
         $scope.fecha = registro.fecha;
         let horafortmat = registro.hora.split(" ");
