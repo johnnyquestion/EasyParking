@@ -3,6 +3,7 @@
     Created on : 24/09/2021, 03:46:59 PM
     Author     : USUARIO
 --%>
+<%@page import="logica.UsuarioData"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -20,6 +21,7 @@
     //se va a validar el tipo de proceso
 
     Vehiculo v = new Vehiculo(); //se piden los parámetros del contacto que se quiere guardar
+    UsuarioData d;
     switch (proceso) {
         case "guardarVehiculo":
             System.out.println("Guardar Vehiculo");
@@ -65,6 +67,16 @@
             System.out.println(sqlActualizar);            
             respuesta.setSuccess(v.actualizarVehiculo());
             break;
+                    
+        case "login":
+            d = new UsuarioData(request.getParameter("usuario"), request.getParameter("contrasena"));
+            if (d.validarlogin(request.getParameter("usuario"), request.getParameter("contrasena"))){
+                respuesta.setMessage("Usuario validado");
+            }else{
+                respuesta.setMessage("Error login");
+            }
+        break;
+        
         default:
             respuesta.setMessage("Lo sentimos, los datos que ha enviado, son inválidos."
                     + " Corrijalos y vuelva a intentar por favor.");

@@ -1,24 +1,49 @@
 var app = angular.module('easyParking', []);
+
 app.controller('registroControlador', function ($scope, $http) {
+    $scope.login = function () {
+            var us_data = {
+                proceso: 'login',
+                usuario: $scope.usuario,
+                contrasena: $scope.contrasena
+            };
+
+            $http({
+                method: 'POST',
+                url: 'peticionesVehiculo.jsp',
+                params: us_data
+            }).then(function (respuesta) {
+                console.log(respuesta.data.message);
+                if (respuesta.data.message === 'Usuario validado'){
+                    alert("Login");
+                    document.location.href = 'easyparking.html'
+                }else{
+                    alert("Error login");
+                }
+            });
+        
+    }
+    
     $scope.registrarVehiculo = function () {
         $scope.mostrarRegistrarVehiculo = true;
         console.log('guardar');
-
+        
         if ($scope.tipoVehiculo === undefined || $scope.fecha === undefined || $scope.hora === undefined || $scope.tipoVehiculo === undefined) {
             alert("Todos los campos son obligatorios.");
         } else {
-            let registro = {
+            var registro = {
                 proceso: 'guardarVehiculo',
                 placa: $scope.placa,
                 fecha: $scope.fecha,
                 hora: $scope.hora,
                 tipoVehiculo: $scope.tipoVehiculo
             };
-            console.log(fecha);               
+            console.log(registro);               
 
             $http({
                 method: 'POST',
                 url: 'peticionesVehiculo.jsp',
+                //url: 'https://testjonny.free.beeceptor.com',
                 params: registro
             }).then(function (respuesta) {
                 console.log(respuesta);
