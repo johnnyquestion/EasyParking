@@ -1,3 +1,4 @@
+logica\UsuarioData.class
 modelo\Response.class
 persistencia\ConexionBD.class
 logica\Vehiculo.class

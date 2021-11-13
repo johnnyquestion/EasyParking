@@ -5,8 +5,6 @@
  */
 package persistencia;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,13 +35,15 @@ public class ConexionBD {
             //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error al asignar driver");
         }
+
         //Conectar a la BD
         try {
             conexion = DriverManager.getConnection(url, username, password); // al atributo conexion se le envia
+            System.out.println("Conexion exitosa");
 
         } catch (SQLException ex) {
             //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-
+            System.out.println("Error al conectar la BD");
         }
     }// cierre del constructor
     // Retornar conexión a BD, metodo para devolver la conexion, abro conexion par hacer transacciones
@@ -58,6 +58,7 @@ public class ConexionBD {
                 conexion.close(); // este metodo es del obt conexion
             } catch (SQLException ex) {
                 //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error al cerrar la conexion");
             }
         }
     }
@@ -70,6 +71,7 @@ public class ConexionBD {
             rs = stmt.executeQuery(sentencia);
         } catch (SQLException | RuntimeException ex) {
             //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al hacer una consulta");
         }
         return rs;        
     }
@@ -80,7 +82,9 @@ public class ConexionBD {
             stmt.execute(sentencia);
             return true;
         } catch (SQLException | RuntimeException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al insertar en la BD");
+            System.out.println(ex);
             return false;
         }
     }
@@ -91,7 +95,8 @@ public class ConexionBD {
             stmt.execute(sentencia);
             return true;
         } catch (SQLException | RuntimeException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al borrar en la BD");
             return false;
         }
     }
@@ -100,10 +105,10 @@ public class ConexionBD {
         try {
             stmt = conexion.createStatement();
             stmt.execute(sentencia);
-            System.out.println(sentencia);
             return true;
         } catch (SQLException | RuntimeException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al actualizar en la BD");
             return false;
         }
     }
@@ -113,7 +118,7 @@ public class ConexionBD {
             conexion.setAutoCommit(commit); // este metodo es del obj conexion, va a ir en false
             return true;
         } catch (SQLException | RuntimeException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en set Autocommit");
             return false;
         }
     }
@@ -123,7 +128,7 @@ public class ConexionBD {
             conexion.commit();
             return true;
         } catch (SQLException | RuntimeException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en commit a la BD");
             return false;
         }
     }
@@ -133,8 +138,11 @@ public class ConexionBD {
             conexion.rollback();
             return true;
         } catch (SQLException | RuntimeException ex) {
-           Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en rollback a la BD");
            return false;
         }
     }
+    
+    
+    
 }//cierre de la clase

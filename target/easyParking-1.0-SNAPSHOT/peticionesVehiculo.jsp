@@ -3,6 +3,7 @@
     Created on : 24/09/2021, 03:46:59 PM
     Author     : USUARIO
 --%>
+<%@page import="logica.UsuarioData"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -16,10 +17,14 @@
 <%
     Response<Vehiculo> respuesta = new Response<Vehiculo>();
     String proceso = request.getParameter("proceso"); //request HTTP 
+    //a los request se les puede pasar parámetros
+    //se va a validar el tipo de proceso
 
     Vehiculo v = new Vehiculo(); //se piden los parámetros del contacto que se quiere guardar
+    UsuarioData d;
     switch (proceso) {
         case "guardarVehiculo":
+            System.out.println("Guardar Vehiculo");
             v.setVeh_placa(request.getParameter("placa")); //a este hay que convertirlo de entero a string
             v.setVeh_color(request.getParameter("color"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -35,15 +40,18 @@
             respuesta.setSuccess(v.guardarVehiculo());
             break;
         case "borrarVehiculo":
+            System.out.println("Eliminar Vehiculo");
             String placa = request.getParameter("placa");
             respuesta.setSuccess(v.borrarVehiculo(placa));
             break;
         case "listarVehiculo":
+            System.out.println("Listar Vehiculos");
             List<Vehiculo> listaVehiculos = v.listarVehiculo();            
             respuesta = new Response<Vehiculo>(true, listaVehiculos);
             break;
         case "actualizarVehiculo":
 
+            System.out.println("Actualizar Vehiculo");
             v.setVeh_placa(request.getParameter("placa"));
             v.setVeh_color(request.getParameter("color"));
             DateFormat formatActualizar = new SimpleDateFormat("yyyy-MM-dd");
@@ -56,10 +64,19 @@
             v.setHora(sqlHoraActualizar);
             v.setVeh_modelo(request.getParameter("modelo"));
             v.setTipo_Vehiculo_idTipo_Vehiculo(request.getParameter("tipoVehiculo"));
-            v.setPlacaAntigua(request.getParameter("placaAntigua"));
+            System.out.println(sqlActualizar);            
             respuesta.setSuccess(v.actualizarVehiculo());
-            
             break;
+                    
+        case "login":
+            d = new UsuarioData(request.getParameter("usuario"), request.getParameter("contrasena"));
+            if (d.validarlogin(request.getParameter("usuario"), request.getParameter("contrasena"))){
+                respuesta.setMessage("Usuario validado");
+            }else{
+                respuesta.setMessage("Error login");
+            }
+        break;
+        
         default:
             respuesta.setMessage("Lo sentimos, los datos que ha enviado, son inválidos."
                     + " Corrijalos y vuelva a intentar por favor.");

@@ -10,21 +10,18 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat, repeat;
   background-size: 100%;
-  
 }
 
 .form-login {
   width: 350px;
   height: 320px;
-  background: rgba(0, 0, 0, 0.7);
+  background: #4e4d4e;
   margin: auto;
   margin-top: 50px;
   box-shadow: 7px 13px 37px #000;
   padding: 10px 20px;
   border-top: 4px solid #017ba0;
-  border-radius: 10px;
   color: white;
-  
 }
 .input{
   font-size: 20px;

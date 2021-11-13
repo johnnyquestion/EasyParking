@@ -7,7 +7,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -19,92 +18,24 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#" ng-click="mostrarInicio()">Inicio</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" ng-click="mostrarRegistroVehiculo()">Registrar Vehículo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" ng-click="listarVehiculos()">Listar Vehículos</a>
-                            </li>
                         </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
             </nav>
             <section class="form-login image2" ng-show="!mostrarDatos">
                 <h5>Login</h5>
                 <div style="display: flex;justify-content: left;"><h5>Usuario</h5></div>
-                <input class="controls" type="text" name="usuario" value="" placeholder="Usuario">
+                <input class="controls" type="text" ng-model="usuario" name="usuario" value="" placeholder="Usuario">
                 <div style="display: flex;justify-content: left;"><h5>Contraseña</h5></div>
-                <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
+                <input class="controls" type="password" ng-model="contrasena" name="contrasena" value="" placeholder="Contraseña">
                 <div style="display: flex;align-items: center;">
-                    <input class="buttons" type="submit" value="Ingresar">
+                <input class="buttons" ng-click="login()" type="button" name="submitform" value="Ingresar">
                 </div>
                 <p><a href="#">¿Olvidaste tu contraseña?</a></p> </section>
-            <div class="container-fluid imagen" ng-show="!mostrarListaVehiculos && mostrarDatos">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12 text-center text-light m-2" ng-show="!actualizar"><h1>Registrar Vehículo</h1></div>
-                    <div class="col-12 text-center text-light m-3" ng-show="actualizar"><h1>Actualizar Vehículo</h1></div>
-                    <div class="col-6 mt-3 d-flex justify-content-end">
-                        <div>
-                            <label class="form-label text-light">Seleccionar Tipo Vehículo*</label>
-                            <select class="form-select" aria-label="Defaul select example" style="max-width: 200px;" ng-model="tipoVehiculo">
-                                <option selected>Seleccione...</option>
-                                <option value="1">Carro</option>
-                                <option value="2">Moto</option>
-                                <option value="3">Bicicleta</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-6 mt-3 d-flex justify-content-start">
-                        <div>
-                            <label class="form-label text-light">Digitar Placa*</label>
-                            <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" placeholder="Digite la placa" style="width:200px;height:40px;" ng-model="placa">
-                        </div>
-                    </div>
-                    <div class="col-6 mt-5 d-flex justify-content-end">
-                        <div>
-                            <label class="form-label text-light">Fecha*</label>
-                            <input type="date" class="form-control" style="max-width: 200px;" ng-model="fecha">
-                        </div>
-                    </div>
-                    <div class="col-6 mt-5 d-flex justify-content-start">
-                        <div>
-                            <label class="form-label text-light">Hora*</label>
-                            <input type="time" class="form-control" style="width:200px;height:40px;" ng-model="hora">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mt-4 d-flex justify-content-center ">
-                    <button type="button" class="btn btn-success m-4 bg-dark" style="width:200px;height:40px;" ng-click="registrarVehiculo()" ng-show="!actualizar">Ingresar Vehiculo</button>
-                    <button type="button" class="btn btn-success m-4 bg-dark" ng-click="actualizarVehiculo()" ng-show="actualizar">Actualizar Vehiculo</button>
-                </div>
-            </div>
-            <div class="container-fluid" ng-show="mostrarListaVehiculos">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-6 d-flex justify-content-center m-3 text-light"><h1>Listar Vehículo</h1>
-                    </div>
-                    <table class="table table-dark table-striped text-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">Placa Vehículo</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Tipo Vehículo</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="registro in registros">
-                                <th scope="row">{{registro.veh_placa}}</th>
-                                <td>{{registro.fecha}}</td>
-                                <td>{{registro.hora}}</td>
-                                <td>{{registro.Tipo_Vehiculo_idTipo_Vehiculo}}</td>
-                                <td><button type="button" class="btn btn-success m-1 bg-dark" ng-click="mostrarActualizar(registro)">Actualizar</button>
-                                    <button type="button" class="btn btn-success m-1 bg-dark" ng-click="borrarVehiculo(registro.veh_placa)">Borrar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>    
     </body>
     <script src="controladorRegistro.js"></script>
